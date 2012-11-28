@@ -21,7 +21,7 @@ class freeradius::params {
   }
 
   $service = $::operatingsystem ? {
-    default => 'freeradius',
+    default => 'radiusd',
   }
 
   $service_status = $::operatingsystem ? {
@@ -29,7 +29,7 @@ class freeradius::params {
   }
 
   $process = $::operatingsystem ? {
-    default => 'freeradius',
+    default => 'radiusd',
   }
 
   $process_args = $::operatingsystem ? {
@@ -37,15 +37,15 @@ class freeradius::params {
   }
 
   $process_user = $::operatingsystem ? {
-    default => 'freeradius',
+    default => 'radiusd',
   }
 
   $config_dir = $::operatingsystem ? {
-    default => '/etc/freeradius',
+    default => '/etc/raddb',
   }
 
   $config_file = $::operatingsystem ? {
-    default => '/etc/freeradius/freeradius.conf',
+    default => '/etc/raddb/radiusd.conf',
   }
 
   $config_file_mode = $::operatingsystem ? {
@@ -57,31 +57,31 @@ class freeradius::params {
   }
 
   $config_file_group = $::operatingsystem ? {
-    default => 'root',
+    default => 'radiusd',
   }
 
   $config_file_init = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/freeradius',
-    default                   => '/etc/sysconfig/freeradius',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/radiusd',
+    default                   => '/etc/sysconfig/radiusd',
   }
 
   $pid_file = $::operatingsystem ? {
-    default => '/var/run/freeradius.pid',
+    default => '/var/run/radiusd/radiusd.pid',
   }
 
   $data_dir = $::operatingsystem ? {
-    default => '/etc/freeradius',
+    default => '/var/lib/radiusd',
   }
 
   $log_dir = $::operatingsystem ? {
-    default => '/var/log/freeradius',
+    default => '/var/log/radius',
   }
 
   $log_file = $::operatingsystem ? {
-    default => '/var/log/freeradius/freeradius.log',
+    default => '/var/log/radius/radius.log',
   }
 
-  $port = '42'
+  $port = '1812'
   $protocol = 'tcp'
 
   # General Settings
