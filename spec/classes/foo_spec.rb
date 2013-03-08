@@ -126,11 +126,8 @@ describe 'freeradius' do
     end
   end
 
-  describe 'Test service autorestart', :broken => true do
-    it 'should automatically restart the service, by default' do
-      content = catalogue.resource('file', 'freeradius.conf').send(:parameters)[:notify]
-      content.should == 'Service[freeradius]{:name=>"freeradius"}'
-    end
+  describe 'Test service autorestart' do
+    it { should contain_file('vsftpd.conf').with_notify('Service[vsftpd]') }
   end
 
   describe 'Test service autorestart' do
