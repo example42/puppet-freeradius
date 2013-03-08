@@ -127,7 +127,7 @@ describe 'freeradius' do
   end
 
   describe 'Test service autorestart' do
-    it { should contain_file('vsftpd.conf').with_notify('Service[vsftpd]') }
+    it { should contain_file('freeradius.conf').with_notify('Service[freeradius]') }
   end
 
   describe 'Test service autorestart' do
