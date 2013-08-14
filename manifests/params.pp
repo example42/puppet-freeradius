@@ -21,7 +21,8 @@ class freeradius::params {
   }
 
   $service = $::operatingsystem ? {
-    default => 'radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => 'freeradius',
+    default                   => 'radiusd',
   }
 
   $service_status = $::operatingsystem ? {
@@ -29,7 +30,8 @@ class freeradius::params {
   }
 
   $process = $::operatingsystem ? {
-    default => 'radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => 'freeradius',
+    default                   => 'radiusd',
   }
 
   $process_args = $::operatingsystem ? {
@@ -37,19 +39,23 @@ class freeradius::params {
   }
 
   $process_user = $::operatingsystem ? {
-    default => 'radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => 'freerad',
+    default                   => 'radiusd',
   }
 
   $config_dir = $::operatingsystem ? {
-    default => '/etc/raddb',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/freeradius',
+    default                   => '/etc/raddb',
   }
 
   $config_file = $::operatingsystem ? {
-    default => '/etc/raddb/radiusd.conf',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/freeradius/radiusd.conf',
+    default                   => '/etc/raddb/radiusd.conf',
   }
 
   $config_file_mode = $::operatingsystem ? {
-    default => '0644',
+    /(?i:Debian|Ubuntu|Mint)/ => '0640',
+    default                   => '0644',
   }
 
   $config_file_owner = $::operatingsystem ? {
@@ -57,28 +63,33 @@ class freeradius::params {
   }
 
   $config_file_group = $::operatingsystem ? {
-    default => 'radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => 'freerad',
+    default                   => 'radiusd',
   }
 
   $config_file_init = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/freeradius',
     default                   => '/etc/sysconfig/radiusd',
   }
 
   $pid_file = $::operatingsystem ? {
-    default => '/var/run/radiusd/radiusd.pid',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/run/freeradius/freeradius.pid',
+    default                   => '/var/run/radiusd/radiusd.pid',
   }
 
   $data_dir = $::operatingsystem ? {
-    default => '/var/lib/radiusd',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/lib/freeradius',
+    default                   => '/var/lib/radiusd',
   }
 
   $log_dir = $::operatingsystem ? {
-    default => '/var/log/radius',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/log/freeradius',
+    default                   => '/var/log/radius',
   }
 
   $log_file = $::operatingsystem ? {
-    default => '/var/log/radius/radius.log',
+    /(?i:Debian|Ubuntu|Mint)/ => '/var/log/freeradius/radius.log',
+    default                   => '/var/log/radius/radius.log',
   }
 
   $port = '1812'
